@@ -1,0 +1,76 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<div class="container mt-4">
+    <table class="table table-bordered table-striped">
+        <tbody>
+            <tr><th>Machine Name</th><td>@Model.MachineName</td></tr>
+            <tr><th>OS</th><td>@Model.OSDescription</td></tr>
+            <tr><th>OS Architecture</th><td>@Model.OSArchitecture</td></tr>
+            <tr><th>Process Architecture</th><td>@Model.ProcessArchitecture</td></tr>
+            <tr><th>.NET Runtime</th><td>@Model.Framework</td></tr>
+            <tr><th>User</th><td>@Model.UserName</td></tr>
+            <tr><th>CPU Cores</th><td>@Model.ProcessorCount</td></tr>
+            <tr><th>Memory (Working Set)</th><td>@Model.WorkingSet</td></tr>
+            <tr><th>System Uptime</th><td>@Model.Uptime</td></tr>
+            <tr><th>Current Time</th><td>@Model.CurrentTime</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <h3>Client-side Libraries (from wwwroot/lib)</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Version</th>
+                <th>Path</th>
+                <th>Size (bytes)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lib in Model.ClientLibraries)
+            {
+                <tr>
+                    <td>@lib.Name</td>
+                    <td>@lib.Version</td>
+                    <td><code>@lib.Path</code></td>
+                    <td>@lib.SizeBytes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<hr />
+
+<div class="container">
+    <h3>Loaded Server Assemblies</h3>
+    <table class="table table-sm table-striped">
+        <thead>
+            <tr>
+                <th>Assembly</th>
+                <th>Version</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model.ServerAssemblies)
+            {
+                <tr>
+                    <td>@a.Name</td>
+                    <td>@a.Version</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

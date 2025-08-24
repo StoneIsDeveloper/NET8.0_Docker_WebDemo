@@ -1,0 +1,30 @@
+﻿# ssh to linux
+ssh stone@127.0.0.1 -p 2222
+
+# mount folder web
+/media/sf_WinShare/NETCore/Demo1Web
+
+# Build dockerfile
+cd /media/sf_WinShare/NETCore/Demo1Web
+docker build -t demo1web:dev -f Demo1Web/Dockerfile .
+
+# docker run
+docker run --rm -d --name demo1web \
+  -p 8080:8080 \
+  -e ASPNETCORE_URLS=http://0.0.0.0:8080 \
+  demo1web:dev
+
+# test url 8080
+curl http://localhost:8080
+
+#
+docker stop demo1web && docker rm demo1web
+docker run --rm -d --name demo1web -p 8080:8080 -e ASPNETCORE_URLS=http://0.0.0.0:8080 demo1web:dev
+
+# check containers 
+docker ps -a
+
+
+docker stop demo1web
+
+docker rm demo1web

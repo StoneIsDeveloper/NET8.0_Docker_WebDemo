@@ -29,6 +29,9 @@ docker stop demo1web
 
 docker rm demo1web
 
+### list images
+docker image ls
+
 ----------------------------
 ## Test Buld Docker for Net8
 

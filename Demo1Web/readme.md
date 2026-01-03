@@ -26,6 +26,7 @@ docker ps -a
 
 
 docker stop demo1web
+docker stop 8f038be1b5de
 
 docker rm demo1web
 

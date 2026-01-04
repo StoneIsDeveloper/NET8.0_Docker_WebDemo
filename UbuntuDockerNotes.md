@@ -41,3 +41,58 @@ docker rm demo1web          # remove stopped container (if not using --rm)
 docker ps -a                # list containers
 docker image ls             # list images
 ```
+
+## Container practice commands (inside demo1web)
+Enter the container first:
+```bash
+docker exec -it demo1web /bin/bash
+```
+
+### Basic info
+```bash
+pwd
+whoami
+id
+uname -a
+cat /etc/os-release
+```
+
+### App files and permissions
+```bash
+ls -la
+ls -la wwwroot
+ls -la /app
+stat /app
+```
+
+### Environment and ports
+```bash
+printenv | sort | head -n 20
+echo $ASPNETCORE_URLS
+ss -ltnp
+```
+
+### Processes and resources
+```bash
+ps aux | head -n 10
+top -b -n 1 | head -n 20
+df -h
+free -m
+```
+
+### Self-test from inside the container
+```bash
+curl -I http://localhost:8080
+curl http://localhost:8080 | head -n 5
+```
+
+### Write test (permissions check)
+```bash
+echo "hello from container" > /app/test.txt
+cat /app/test.txt
+```
+
+### Exit container
+```bash
+exit
+```

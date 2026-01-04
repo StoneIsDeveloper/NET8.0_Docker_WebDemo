@@ -72,6 +72,15 @@ echo $ASPNETCORE_URLS
 ss -ltnp
 ```
 
+### Install tools to use `ps aux` (inside container)
+If `ps` or `head` is missing in the container, install them as root:
+```bash
+docker exec -it -u root demo1web /bin/bash
+apt-get update
+apt-get install -y procps coreutils
+ps aux | head -n 10
+```
+
 ### Processes and resources
 ```bash
 ps aux | head -n 10

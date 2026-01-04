@@ -71,6 +71,9 @@ printenv | sort | head -n 20
 echo $ASPNETCORE_URLS
 ss -ltnp
 ```
+Notes:
+- `ss` = socket statistics (replacement for `netstat`).
+- `-l` show listening sockets, `-t` TCP only, `-n` numeric output, `-p` show process info.
 
 ### Install tools to use `ps aux` (inside container)
 If `ps` or `head` is missing in the container, install them as root:

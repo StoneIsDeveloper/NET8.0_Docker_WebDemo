@@ -1,0 +1,9 @@
+services:
+  demo1web:
+    image: demo1web:dev
+    container_name: demo1web
+    environment:
+      ASPNETCORE_URLS: http://0.0.0.0:8080
+      CONTAINER_NAME: demo1web
+    ports:
+      - "8080:8080"

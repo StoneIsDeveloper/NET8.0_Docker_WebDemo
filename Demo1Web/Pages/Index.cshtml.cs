@@ -18,6 +18,7 @@ namespace Demo1Web.Pages
 
         // Properties exposed to the Razor page
         public string MachineName { get; private set; } = string.Empty;
+        public string ContainerName { get; private set; } = string.Empty;
         public string OSDescription { get; private set; } = string.Empty;
         public string Framework { get; private set; } = string.Empty;
         public string CurrentTime { get; private set; } = string.Empty;     
@@ -37,6 +38,10 @@ namespace Demo1Web.Pages
         public void OnGet()
         {
             MachineName = Environment.MachineName;
+            ContainerName =
+                Environment.GetEnvironmentVariable("CONTAINER_NAME")
+                ?? Environment.GetEnvironmentVariable("HOSTNAME")
+                ?? "Unknown";
             OSDescription = RuntimeInformation.OSDescription;
             Framework = RuntimeInformation.FrameworkDescription;
             OSArchitecture = RuntimeInformation.OSArchitecture.ToString();

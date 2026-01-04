@@ -67,6 +67,11 @@ This Dockerfile builds and publishes the ASP.NET Core 8 app, then runs it from a
 - Commonly required after copying files as `root` in Docker build stages.
 - Reduces permission errors when running under `USER app`.
 
+**RUN chown -R app:app /app（中文说明）**
+- 将 `/app` 下的文件归属到 `app` 用户，确保应用运行时可读写。
+- 构建阶段通常以 `root` 拷贝文件，需要在切换用户前调整权限。
+- 避免在 `USER app` 运行时出现权限错误。
+
 ### Why Multi-Stage
 - Smaller final image.
 - SDK stays out of production.

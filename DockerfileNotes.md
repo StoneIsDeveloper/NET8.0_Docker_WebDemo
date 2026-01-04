@@ -62,6 +62,11 @@ This Dockerfile builds and publishes the ASP.NET Core 8 app, then runs it from a
 - Uses `root` briefly to set ownership, then switches to non-root `app`.
 - Runs the app with `dotnet Demo1Web.dll`.
 
+**RUN chown -R app:app /app (details)**
+- Ensures files in `/app` are owned by the `app` user so the process can read/write if needed.
+- Commonly required after copying files as `root` in Docker build stages.
+- Reduces permission errors when running under `USER app`.
+
 ### Why Multi-Stage
 - Smaller final image.
 - SDK stays out of production.
@@ -98,6 +103,11 @@ This Dockerfile builds and publishes the ASP.NET Core 8 app, then runs it from a
 - 基于 `base` 运行时镜像。
 - 先用 `root` 调整目录权限，再切换为非 root 的 `app` 用户。
 - 通过 `dotnet Demo1Web.dll` 启动应用。
+
+**RUN chown -R app:app /app（说明）**
+- 将 `/app` 目录的所有文件归属到 `app` 用户，确保运行时可读写。
+- 构建阶段通常以 `root` 拷贝文件，需要在切换用户前调整权限。
+- 使用 `USER app` 运行时可避免权限问题。
 
 ### 为什么使用多阶段构建
 - 最终镜像更小。

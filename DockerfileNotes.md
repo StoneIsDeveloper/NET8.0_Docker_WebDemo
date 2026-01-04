@@ -67,6 +67,11 @@ This Dockerfile builds and publishes the ASP.NET Core 8 app, then runs it from a
 - SDK stays out of production.
 - Better security posture.
 
+### Why base and build use different images
+- `build` uses the SDK image to restore packages, compile, and publish.
+- `base` uses the smaller runtime image to run the already-built app.
+- This keeps the final image smaller, faster to pull, and reduces attack surface.
+
 ---
 
 ## 中文
@@ -98,3 +103,8 @@ This Dockerfile builds and publishes the ASP.NET Core 8 app, then runs it from a
 - 最终镜像更小。
 - 生产镜像不包含 SDK。
 - 安全性更好。
+
+### 为什么 base 和 build 使用不同镜像
+- `build` 使用 SDK 镜像进行还原、编译和发布。
+- `base` 使用更小的运行时镜像来运行已构建的应用。
+- 最终镜像更小、拉取更快、攻击面更低。

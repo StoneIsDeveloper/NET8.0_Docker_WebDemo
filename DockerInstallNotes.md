@@ -8,6 +8,11 @@ sudo apt-get update
 sudo apt-get install -y ca-certificates curl gnupg lsb-release
 ```
 
+## apt vs apt-get (update)
+- `apt-get update` is the stable, script-friendly command with consistent output.
+- `apt update` is the newer, user-friendly front end with nicer progress and upgrade hints.
+- Both do the same package index refresh; prefer `apt-get` in scripts and `apt` interactively.
+
 ## 2. Add Docker GPG key and repository
 ```bash
 sudo install -m 0755 -d /etc/apt/keyrings

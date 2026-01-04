@@ -4,6 +4,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 # USER app
 WORKDIR /app
 EXPOSE 8080
+RUN apt-get update && apt-get install -y --no-install-recommends procps coreutils \
+    && rm -rf /var/lib/apt/lists/*
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release

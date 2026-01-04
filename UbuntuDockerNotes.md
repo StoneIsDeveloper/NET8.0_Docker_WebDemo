@@ -26,6 +26,8 @@ docker run --rm -d --name demo1web \
   -p 8080:8080 \
   -e ASPNETCORE_URLS=http://0.0.0.0:8080 \
   demo1web:dev
+
+docker compose up -d
 ```
 - Once running, browse from Windows: `http://localhost:8080`
 - From Ubuntu you can also test: `curl http://localhost:8080`
